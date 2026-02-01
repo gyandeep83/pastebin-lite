@@ -37,7 +37,6 @@ export default async function PastePage({
             boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
           }}
         >
-          <h1>Paste</h1>
           <p>404 – Paste not found</p>
         </div>
       </main>
@@ -66,7 +65,6 @@ export default async function PastePage({
           boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
         }}
       >
-        <h1 style={{ marginBottom: 16 }}>Paste</h1>
 
         <pre
           style={{
