@@ -7,7 +7,6 @@ export default async function PastePage({
 }) {
   const { id } = await params;
 
-  // ✅ await headers()
   const h = await headers();
   const host = h.get("host");
   const proto = h.get("x-forwarded-proto") ?? "http";
@@ -18,14 +17,67 @@ export default async function PastePage({
   );
 
   if (!res.ok) {
-    return <h1>404 – Paste not found</h1>;
+    return (
+      <main
+        style={{
+          minHeight: "100vh",
+          background: "#f4f6f8",
+          padding: "40px",
+          fontFamily: "system-ui, sans-serif",
+          color: "#000000",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 700,
+            margin: "0 auto",
+            background: "#ffffff",
+            padding: "24px",
+            borderRadius: 8,
+            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+          }}
+        >
+          <h1>Paste</h1>
+          <p>404 – Paste not found</p>
+        </div>
+      </main>
+    );
   }
 
   const data = await res.json();
 
   return (
-    <pre style={{ whiteSpace: "pre-wrap" }}>
-      {data.content}
-    </pre>
+    <main
+      style={{
+        minHeight: "100vh",
+        background: "#f4f6f8",
+        padding: "40px",
+        fontFamily: "system-ui, sans-serif",
+        color: "#000000",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 700,
+          margin: "0 auto",
+          background: "#ffffff",
+          padding: "24px",
+          borderRadius: 8,
+          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+        }}
+      >
+        <h1 style={{ marginBottom: 16 }}>Paste</h1>
+
+        <pre
+          style={{
+            whiteSpace: "pre-wrap",
+            fontSize: 14,
+            lineHeight: 1.5,
+          }}
+        >
+          {data.content}
+        </pre>
+      </div>
+    </main>
   );
 }
