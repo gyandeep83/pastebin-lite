@@ -55,4 +55,41 @@ The project focuses on correct backend behavior, persistence, and simple UI flow
     ```bash
     http://localhost:3000
 
+## Persistence Layer
+
+This project uses Redis for persistence via Upstash (Vercel Redis).
+
+Why Redis?
+1. Works reliably in serverless environments
+2. Fast key–value access
+3. No in-memory state (unlike JavaScript Map)
+4. Data persists across requests, restarts, and deployments
+
+Each paste is stored as a Redis key in the following format:
+```bash
+paste:<paste_id>
+```
+The stored value includes:
+
+1. paste content
+2. remaining view count (if limited)
+3. expiration timestamp (if TTL is set)
+
+Redis credentials are managed through Vercel environment variables and are not committed to the repository.
+
+## Notes
+
+1. UI styling is intentionally minimal; functionality and correctness are prioritized.
+2. The application is safe to deploy on serverless platforms.
+3. Expired or exhausted pastes return a 404 Not Found response as expected.
+
+## Live Demo
+Deployed on Vercel (aliased URL):
+```bash
+https://pastebin-lite-omega-wine.vercel.app
+```
+
+
+
+
 
